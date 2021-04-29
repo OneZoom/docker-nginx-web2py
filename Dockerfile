@@ -1,4 +1,4 @@
-FROM onezoom/docker-nginx:1.10.3
+FROM onezoom/docker-nginx:1.18.0
 MAINTAINER OneZoom developers <mail@onezoom.org>
 
 ARG VCS_REF

@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.com/onezoom/docker-nginx-web2py.svg?branch=master)](https://travis-ci.com/onezoom/docker-nginx-web2py)
 [![Layers](https://images.microbadger.com/badges/image/onezoom/docker-nginx-web2py.svg)](http://microbadger.com/images/onezoom/docker-nginx-web2py)
 
-Docker container for Nginx with Web2py using python 3 on Ubuntu 18.04 based on [onezoom/docker-nginx](https://github.com/onezoom/docker-nginx/) derived from [madharjan/docker-nginx](https://github.com/madharjan/docker-nginx/)
+Docker container for Nginx with Web2py using python 3 on Ubuntu 20.04 based on [onezoom/docker-nginx](https://github.com/onezoom/docker-nginx/) derived from [madharjan/docker-nginx](https://github.com/madharjan/docker-nginx/)
 
 ## Features
 
@@ -12,7 +12,7 @@ Docker container for Nginx with Web2py using python 3 on Ubuntu 18.04 based on [
 * Minimal (for production deploy) version of container `docker-nginx-web2py-min` for Web2py without `admin`, `example` and `welcome`
 * Bats [bats-core/bats-core](https://github.com/bats-core/bats-core) based test cases
 
-## Nginx 1.10.3 & Web2py 2.21.1 (docker-nginx-web2py)
+## Nginx 1.18.0 & Web2py 2.21.1 (docker-nginx-web2py)
 
 ### Environment
 

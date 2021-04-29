@@ -6,6 +6,7 @@
 * Allow appconfig.ini to be replaced
 * Use python3 throughout (v3.5)
 * Update to version 2.21.1
+* Base on ubuntu 20.04
 
 ## 2.18.3
 

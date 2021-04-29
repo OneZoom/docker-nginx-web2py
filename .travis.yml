@@ -3,7 +3,7 @@ branches:
   only:
   - master
 
-dist: trusty
+dist: focal
 language: minimal
 
 jobs:
