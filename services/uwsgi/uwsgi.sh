@@ -19,7 +19,7 @@ apt-get install -y --no-install-recommends \
   rsync
 
 PIPPATH=`which pip3`
-$PIPPATH install --upgrade "pip < 21.0"
+$PIPPATH install --upgrade pip
 $PIPPATH install setuptools --upgrade
 $PIPPATH install wheel
 $PIPPATH install --upgrade uwsgi
