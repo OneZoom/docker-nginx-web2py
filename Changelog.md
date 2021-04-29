@@ -2,6 +2,8 @@
 
 ### Changes
 
+* Reference OneZoom for updated functionality
+* Allow appconfig.ini to be replaced
 * Use python3 throughout (v3.5)
 * Update to version 2.21.1
 

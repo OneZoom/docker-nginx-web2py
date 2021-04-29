@@ -1,9 +1,9 @@
 # docker-nginx-web2py
 
-[![Build Status](https://travis-ci.com/madharjan/docker-nginx-web2py.svg?branch=master)](https://travis-ci.com/madharjan/docker-nginx-web2py)
-[![Layers](https://images.microbadger.com/badges/image/madharjan/docker-nginx-web2py.svg)](http://microbadger.com/images/madharjan/docker-nginx-web2py)
+[![Build Status](https://travis-ci.com/onezoom/docker-nginx-web2py.svg?branch=master)](https://travis-ci.com/onezoom/docker-nginx-web2py)
+[![Layers](https://images.microbadger.com/badges/image/onezoom/docker-nginx-web2py.svg)](http://microbadger.com/images/onezoom/docker-nginx-web2py)
 
-Docker container for Nginx with Web2py based on [madharjan/docker-nginx](https://github.com/madharjan/docker-nginx/)
+Docker container for Nginx with Web2py using python 3 on Ubuntu 18.04 based on [onezoom/docker-nginx](https://github.com/onezoom/docker-nginx/) derived from [madharjan/docker-nginx](https://github.com/madharjan/docker-nginx/)
 
 ## Features
 
@@ -22,7 +22,7 @@ Docker container for Nginx with Web2py based on [madharjan/docker-nginx](https:/
 | DISABLE_UWSGI             | 0       | 1 (to disable)                                                                             |
 |                           |         |                                                                                            |
 | INSTALL_PROJECT           | 0       | 1 (to enable)                                                                              |
-| PROJECT_GIT_REPO          |         | [https://github.com/madharjan/web2py-contest](https://github.com/madharjan/web2py-contest) |
+| PROJECT_GIT_REPO          |         | [https://github.com/OneZoom/OZtree](https://github.com/OneZoom/OZtree) |
 | PROJECT_GIT_TAG           | HEAD    | v5.1.4                                                                                     |
 | PROJECT_APPCONFIG_INI_PATH|         | /etc/appconfig.ini                                                                         |
 
@@ -30,7 +30,7 @@ Docker container for Nginx with Web2py based on [madharjan/docker-nginx](https:/
 
 ```bash
 # clone project
-git clone https://github.com/madharjan/docker-nginx-web2py
+git clone https://github.com/onezoom/docker-nginx-web2py
 cd docker-nginx-web2py
 
 # build
@@ -62,7 +62,7 @@ docker run -d \
   -v /opt/docker/web2py/applications:/opt/web2py/applications \
   -v /opt/docker/web2py/log:/var/log/nginx \
   --name web2py \
-  madharjan/docker-nginx-web2py:2.21.1
+  onezoom/docker-nginx-web2py:2.21.1
 
 # run container
 # Web2py Minimal
@@ -72,7 +72,7 @@ docker run -d \
   -v /opt/docker/web2py/applications:/opt/web2py/applications \
   -v /opt/docker/web2py/log:/var/log/nginx \
   --name web2py \
-  madharjan/docker-nginx-web2py-min:2.21.1
+  onezoom/docker-nginx-web2py-min:2.21.1
 ```
 
 ## Systemd Unit File
@@ -92,7 +92,7 @@ ExecStartPre=-/bin/mkdir -p /opt/docker/web2py/applications
 ExecStartPre=-/bin/mkdir -p /opt/docker/web2py/log
 ExecStartPre=-/usr/bin/docker stop web2py
 ExecStartPre=-/usr/bin/docker rm web2py
-ExecStartPre=-/usr/bin/docker pull madharjan/docker-nginx-web2py:2.21.1
+ExecStartPre=-/usr/bin/docker pull onezoom/docker-nginx-web2py:2.21.1
 
 ExecStart=/usr/bin/docker run \
   -e WEB2PY_ADMIN=Pa55w0rd \
@@ -100,7 +100,7 @@ ExecStart=/usr/bin/docker run \
   -v /opt/docker/web2py/applications:/opt/web2py/applications \
   -v /opt/docker/web2py/log:/var/log/nginx \
   --name  web2py \
-  madharjan/docker-nginx-web2py:2.21.1
+  onezoom/docker-nginx-web2py:2.21.1
 
 ExecStop=/usr/bin/docker stop -t 2 web2py
 
@@ -120,7 +120,7 @@ WantedBy=multi-user.target
 | WEB2PY_MIN           | true             | false                                                                                      |
 |                      |                  |                                                                                            |
 | INSTALL_PROJECT      | 0                | 1 (to enable)                                                                              |
-| PROJECT_GIT_REPO     |                  | [https://github.com/madharjan/web2py-contest](https://github.com/madharjan/web2py-contest) |
+| PROJECT_GIT_REPO     |                  | [https://github.com/OneZoom/OZtree](https://github.com/OneZoom/OZtree) |
 | PROJECT_GIT_TAG      | HEAD             | v1.0                                                                                       |
 
 ### To deploy web projects
@@ -133,9 +133,9 @@ docker run --rm \
   -e WEB2PY_ADMIN=Pa55w0rd \
   -e WEB2PY_MIN=false \
   -e INSTALL_PROJECT=1 \
-  -e PROJECT_GIT_REPO=https://github.com/madharjan/web2py-contest.git \
+  -e PROJECT_GIT_REPO=https://github.com/OneZoom/OZtree \
   -e PROJECT_GIT_TAG=HEAD \
-  madharjan/docker-nginx-web2py-min:2.21.1 \
+  onezoom/docker-nginx-web2py-min:2.21.1 \
   web2py-systemd-unit | \
   sudo tee /etc/systemd/system/web2py.service
 

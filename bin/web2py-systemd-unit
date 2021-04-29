@@ -55,7 +55,7 @@ ExecStartPre=-/bin/mkdir -p ${VOLUME_HOME}/${NAME}/applications
 ExecStartPre=-/bin/mkdir -p ${VOLUME_HOME}/${NAME}/log
 ExecStartPre=-/usr/bin/docker stop ${NAME}
 ExecStartPre=-/usr/bin/docker rm ${NAME}
-ExecStartPre=-/usr/bin/docker pull madharjan/${IMAGE_NAME}:${VERSION}
+ExecStartPre=-/usr/bin/docker pull onezoom/${IMAGE_NAME}:${VERSION}
 
 ExecStart=/usr/bin/docker run \\
   ${LINK_LINE}-e INSTALL_PROJECT=${INSTALL_PROJECT} \\
@@ -65,7 +65,7 @@ ExecStart=/usr/bin/docker run \\
   -v /opt/docker/${NAME}/applications:/opt/web2py/applications \\
   -v /opt/docker/${NAME}/log:/var/log/nginx \\
   --name ${NAME} \\
-  madharjan/${IMAGE_NAME}:${VERSION}
+  onezoom/${IMAGE_NAME}:${VERSION}
 
 ExecStop=/usr/bin/docker stop -t 2 ${NAME}
 

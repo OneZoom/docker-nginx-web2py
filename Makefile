@@ -1,5 +1,5 @@
 
-NAME = madharjan/docker-nginx-web2py
+NAME = onezoom/docker-nginx-web2py
 VERSION = 2.21.1
 
 DEBUG ?= true
@@ -77,7 +77,7 @@ run:
 		-e DEBUG=$(DEBUG) \
 		-e WEB2PY_ADMIN=Pa55word! \
 		-e INSTALL_PROJECT=1 \
-		-e PROJECT_GIT_REPO=https://github.com/madharjan/web2py-contest.git \
+		-e PROJECT_GIT_REPO=https://github.com/OneZoom/OZtree \
 		-e PROJECT_GIT_TAG=HEAD \
 		-v /tmp/tmp/web2py/app:/opt/web2py/applications  \
 		--name web2py_app $(NAME):$(VERSION) 
