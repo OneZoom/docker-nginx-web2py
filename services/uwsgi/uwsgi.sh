@@ -14,15 +14,10 @@ apt-get install -y --no-install-recommends \
   build-essential \
   libxml2-dev \
   python3-dev \
-  python3-pip \
+  pipx \
   unzip \
-  rsync
-
-PIPPATH=`which pipx`
-$PIPPATH install --upgrade pip
-$PIPPATH install setuptools --upgrade
-$PIPPATH install wheel
-$PIPPATH install --upgrade uwsgi
+  rsync \
+  uwsgi
 
 mkdir -p /etc/uwsgi
 cp ${UWSGI_BUILD_PATH}/uwsgi.ini /etc/uwsgi/

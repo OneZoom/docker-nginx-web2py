@@ -7,6 +7,8 @@ if [ "${DEBUG}" = true ]; then
   set -x
 fi
 
+echo "Cleaning up temporary files and packages"
+
 apt-get autoremove -y
 apt-get clean
 rm -rf /build
