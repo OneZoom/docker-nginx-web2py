@@ -18,7 +18,7 @@ apt-get install -y --no-install-recommends \
   unzip \
   rsync
 
-PIPPATH=`which pip3`
+PIPPATH=`which pipx`
 $PIPPATH install --upgrade pip
 $PIPPATH install setuptools --upgrade
 $PIPPATH install wheel
