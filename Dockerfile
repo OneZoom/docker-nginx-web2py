@@ -1,4 +1,4 @@
-FROM onezoom/docker-nginx:1.18.0
+FROM onezoom/docker-nginx:1.28.0
 MAINTAINER OneZoom developers <mail@onezoom.org>
 
 ARG VCS_REF
@@ -9,8 +9,8 @@ ARG DEBUG=false
 LABEL description="Docker container for Nginx with Web2py" os_version="Ubuntu ${UBUNTU_VERSION}" \
       org.label-schema.vcs-ref=${VCS_REF} org.label-schema.vcs-url="https://github.com/onezoom/docker-nginx-web2py"
 
-ENV WEB2PY_VERSION ${WEB2PY_VERSION}
-ENV WEB2PY_MIN ${WEB2PY_MIN}
+ENV WEB2PY_VERSION=${WEB2PY_VERSION}
+ENV WEB2PY_MIN=${WEB2PY_MIN}
 
 RUN mkdir -p /build
 COPY . /build
