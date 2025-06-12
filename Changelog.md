@@ -1,3 +1,11 @@
+## 3.0.11
+
+### Changes
+
+* Base on ubuntu 20.04
+* Update to web2py version 3.0.11
+
+
 ## 2.21.1
 
 ### Changes
@@ -6,7 +14,7 @@
 * Allow appconfig.ini to be replaced
 * Use python3 throughout (v3.5)
 * Update to version 2.21.1
-* Base on ubuntu 24.04
+* Base on ubuntu 20.04
 
 ## 2.18.3
 
