@@ -11,7 +11,6 @@ LABEL description="Docker container for Nginx with Web2py" os_version="Ubuntu ${
 
 ENV WEB2PY_VERSION=${WEB2PY_VERSION}
 ENV WEB2PY_MIN=${WEB2PY_MIN}
-ENV RUNLEVEL=1
 
 RUN mkdir -p /build
 COPY . /build

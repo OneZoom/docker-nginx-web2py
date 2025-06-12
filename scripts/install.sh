@@ -25,7 +25,7 @@ apt-get install -y --no-install-recommends git-core python3-git
 if [ ! -d /opt/web2py ]; then
   mkdir -p /opt/tmp
   cd /opt/tmp
-  git clone https://github.com/web2py/web2py.git --depth 1 --branch v3.0.11 --single-branch web2py
+  git clone https://github.com/web2py/web2py.git --depth 1 --branch ${WEB2PY_VERSION} --single-branch web2py
   cd web2py
   git submodule update --init --recursive
   cd ../../

@@ -1,9 +1,11 @@
 
 NAME = onezoom/docker-nginx-web2py
-VERSION = 2.21.1
+VERSION = v3.0.11
 
 DEBUG ?= true
+PLATFORM ?= 
 
+PLATFORM_ARG = $(if $(PLATFORM),--platform $(PLATFORM),)
 DOCKER_USERNAME ?= $(shell read -p "DockerHub Username: " pwd; echo $$pwd)
 DOCKER_PASSWORD ?= $(shell stty -echo; read -p "DockerHub Password: " pwd; stty echo; echo $$pwd)
 DOCKER_LOGIN ?= $(shell cat ~/.docker/config.json | grep "docker.io" | wc -l)
@@ -14,20 +16,20 @@ all: build
 
 docker_login:
 ifeq ($(DOCKER_LOGIN), 1)
-		@echo "Already login to DockerHub"
+		@echo "Already logged in to DockerHub"
 else
 		@docker login -u $(DOCKER_USERNAME) -p $(DOCKER_PASSWORD)
 endif
 
 build:
-	docker build \
+	docker build $(PLATFORM_ARG) \
 		--build-arg WEB2PY_VERSION=$(VERSION) \
 		--build-arg VCS_REF=`git rev-parse --short HEAD` \
 		--build-arg WEB2PY_MIN=false \
 		--build-arg DEBUG=$(DEBUG) \
 		-t $(NAME):$(VERSION) --rm .
 
-	docker build \
+	docker build $(PLATFORM_ARG) \
 		--build-arg WEB2PY_VERSION=$(VERSION) \
 		--build-arg VCS_REF=`git rev-parse --short HEAD` \
 		--build-arg WEB2PY_MIN=true \
@@ -41,7 +43,7 @@ run:
 	mkdir -p /tmp/web2py/full
 	mkdir -p /tmp/web2py/min
 
-	docker run -d \
+	docker run $(PLATFORM_ARG) -d \
 		-e WEB2PY_ADMIN=Pa55word! \
 		-v /tmp/web2py/full:/opt/web2py/applications \
 		-e DEBUG=$(DEBUG) \
@@ -49,21 +51,21 @@ run:
 
 	sleep 3
 
-	docker run -d \
+	docker run $(PLATFORM_ARG) -d \
 		-v /tmp/web2py/min:/opt/web2py/applications \
 		-e DEBUG=$(DEBUG) \
 		--name web2py_min $(NAME)-min:$(VERSION)
 
 	sleep 2
 
-	docker run -d \
+	docker run $(PLATFORM_ARG) -d \
 		-e DISABLE_UWSGI=1 \
 		-e DEBUG=$(DEBUG) \
 		--name web2py_no_uwsgi $(NAME):$(VERSION)
 
 	sleep 2
 
-	docker run -d \
+	docker run $(PLATFORM_ARG) -d \
 		-e DISABLE_NGINX=1 \
 		-e DEBUG=$(DEBUG) \
 		--name web2py_no_nginx $(NAME):$(VERSION)
@@ -73,7 +75,7 @@ run:
 	rm -rf /tmp/web2py/app
 	mkdir -p /tmp/web2py/app
 
-	docker run -d \
+	docker run $(PLATFORM_ARG) -d \
 		-e DEBUG=$(DEBUG) \
 		-e WEB2PY_ADMIN=Pa55word! \
 		-e INSTALL_PROJECT=1 \

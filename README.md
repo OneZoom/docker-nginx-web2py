@@ -3,7 +3,14 @@
 [![Build Status](https://travis-ci.com/onezoom/docker-nginx-web2py.svg?branch=master)](https://travis-ci.com/onezoom/docker-nginx-web2py)
 [![Layers](https://images.microbadger.com/badges/image/onezoom/docker-nginx-web2py.svg)](http://microbadger.com/images/onezoom/docker-nginx-web2py)
 
-Docker container for Nginx with Web2py using python 3 on Ubuntu 20.04 based on [onezoom/docker-nginx](https://github.com/onezoom/docker-nginx/) derived from [madharjan/docker-nginx](https://github.com/madharjan/docker-nginx/)
+Docker container for Nginx with Web2py using python 3 on Ubuntu 24.04 based on [onezoom/docker-nginx](https://github.com/onezoom/docker-nginx/) derived from [madharjan/docker-nginx](https://github.com/madharjan/docker-nginx/)
+
+To build, run `make build`. To release a new version, change the web2py version in the
+Makefile, and (if necessary) the first line of the Dockerfile, then run `make release`,
+which will run a test suite (also available using `make test`) and, if tests pass,
+attempt to push a release to docker.io. You may need to run `make clean` beforehand.
+To specify building for a different platform or set of platforms (e.g. on Mac ARM),
+specify e.g. `make build PLATFORM=linux/amd64,linux/arm64`.
 
 ## Features
 
@@ -12,7 +19,7 @@ Docker container for Nginx with Web2py using python 3 on Ubuntu 20.04 based on [
 * Minimal (for production deploy) version of container `docker-nginx-web2py-min` for Web2py without `admin`, `example` and `welcome`
 * Bats [bats-core/bats-core](https://github.com/bats-core/bats-core) based test cases
 
-## Nginx 1.18.0 & Web2py 2.21.1 (docker-nginx-web2py)
+## Nginx 1.38.0 & Web2py 3.0.11 (docker-nginx-web2py)
 
 ### Environment
 
@@ -62,7 +69,7 @@ docker run -d \
   -v /opt/docker/web2py/applications:/opt/web2py/applications \
   -v /opt/docker/web2py/log:/var/log/nginx \
   --name web2py \
-  onezoom/docker-nginx-web2py:2.21.1
+  onezoom/docker-nginx-web2py:3.0.11
 
 # run container
 # Web2py Minimal
@@ -72,7 +79,7 @@ docker run -d \
   -v /opt/docker/web2py/applications:/opt/web2py/applications \
   -v /opt/docker/web2py/log:/var/log/nginx \
   --name web2py \
-  onezoom/docker-nginx-web2py-min:2.21.1
+  onezoom/docker-nginx-web2py-min:3.0.11
 ```
 
 ## Systemd Unit File
@@ -135,7 +142,7 @@ docker run --rm \
   -e INSTALL_PROJECT=1 \
   -e PROJECT_GIT_REPO=https://github.com/OneZoom/OZtree \
   -e PROJECT_GIT_TAG=HEAD \
-  onezoom/docker-nginx-web2py-min:2.21.1 \
+  onezoom/docker-nginx-web2py-min:3.0.11 \
   web2py-systemd-unit | \
   sudo tee /etc/systemd/system/web2py.service
 
