@@ -5,10 +5,11 @@
 
 Docker container for Nginx with Web2py using python 3 on Ubuntu 24.04 based on [onezoom/docker-nginx](https://github.com/onezoom/docker-nginx/) derived from [madharjan/docker-nginx](https://github.com/madharjan/docker-nginx/)
 
-To build, run `make build`. To release a new version, change the web2py version in the
-Makefile, and (if necessary) the first line of the Dockerfile, then run `make release`,
-which will run a test suite (also available using `make test`) and, if tests pass,
-attempt to push a release to docker.io. You may need to run `make clean` beforehand.
+To build, run `make build`, which will build both a normal and a `-min` version (web2py
+without the extra welcom app etc). To release new versions of the normal and -min containers,
+change the web2py version in the Makefile, and (if necessary) the first line of the Dockerfile,
+then run `make release`, which will run a test suite (also available using `make test`) and,
+if tests pass, attempt to push a release to docker.io. You may need to run `make clean` beforehand.
 To specify building for a different platform or set of platforms (e.g. on Mac ARM),
 specify e.g. `make build PLATFORM=linux/amd64,linux/arm64`.
 
