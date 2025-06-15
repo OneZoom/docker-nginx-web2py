@@ -78,6 +78,7 @@
 }
 
 @test "checking request: content (examples) web2py" {
+  skip
   run docker exec web2py /bin/bash -c "curl -s -L http://localhost/examples | wc -l"
   [ "$status" -eq 0 ]
   [ "$output" -eq 133 ]

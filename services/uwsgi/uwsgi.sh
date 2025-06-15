@@ -15,12 +15,16 @@ apt-get install -y --no-install-recommends \
   libxml2-dev \
   python3-dev \
   python3-pip \
-  pipx \
   unzip \
   rsync
 
-pipx ensurepath
-pipx install uwsgi
+PIPPATH=`which pip3`
+$PIPPATH install --break-system-packages setuptools --upgrade
+$PIPPATH install --break-system-packages wheel
+$PIPPATH install --break-system-packages --upgrade uwsgi
+
+# pipx ensurepath
+# pipx install uwsgi
 
 mkdir -p /etc/uwsgi
 cp ${UWSGI_BUILD_PATH}/uwsgi.ini /etc/uwsgi/
